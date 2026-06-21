@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>体彩 | 发现与选择</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f5f8;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1b2b3a;
+            padding: 1.2rem 0 2.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 720px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        /* 叙事开场区域 */
+        .hero-note {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.2rem 1.8rem;
+            box-shadow: 0 4px 16px rgba(0, 50, 60, 0.06);
+            margin-bottom: 2rem;
+            border: 1px solid #d7e3e8;
+            transition: box-shadow 0.2s;
+        }
+        .hero-note:hover {
+            box-shadow: 0 6px 22px rgba(22, 120, 130, 0.08);
+        }
+        .short-line {
+            font-size: 1.35rem;
+            font-weight: 450;
+            letter-spacing: 0.01em;
+            color: #1b4e5a;
+            border-left: 4px solid #2f9c9c;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .intro-text {
+            font-size: 1.05rem;
+            color: #2a3f49;
+            margin-bottom: 1.8rem;
+        }
+        .intro-text a {
+            color: #16777e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #80c0c4;
+            transition: border 0.2s, background 0.1s;
+            padding: 0 0.08rem;
+        }
+        .intro-text a:hover {
+            border-bottom: 1px solid #16777e;
+            background: #e0f0f0;
+        }
+        /* 承接段落：使用场景 */
+        .bridge {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1.8rem 1.8rem 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #cee2e6;
+            box-shadow: 0 2px 8px rgba(0, 60, 70, 0.04);
+        }
+        .bridge p {
+            margin-bottom: 1.1rem;
+        }
+        .bridge p:last-child {
+            margin-bottom: 0;
+        }
+        .bridge em {
+            font-style: normal;
+            color: #1f7a7a;
+            background: #e2f3f0;
+            padding: 0.1rem 0.4rem;
+            border-radius: 12px;
+            font-size: 0.95em;
+        }
+        /* 特点网格卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.8rem 0 2rem;
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.4rem 1rem 1.6rem;
+            box-shadow: 0 2px 12px rgba(30, 90, 90, 0.04);
+            border: 1px solid #d2e5e9;
+            transition: transform 0.1s ease, border-color 0.15s;
+        }
+        .feature-card:hover {
+            border-color: #6bbfbf;
+            transform: translateY(-2px);
+        }
+        .feature-card .icon-symbol {
+            font-size: 1.75rem;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+            color: #2c8b8b;
+            letter-spacing: 0.1rem;
+        }
+        .feature-card h3 {
+            font-size: 1.02rem;
+            font-weight: 550;
+            color: #133e45;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.01em;
+        }
+        .feature-card p {
+            font-size: 0.93rem;
+            color: #30525c;
+            line-height: 1.5;
+        }
+        /* 温和结尾区块 */
+        .ending-note {
+            background: #e5f0f2;
+            border-radius: 28px;
+            padding: 1.8rem 1.8rem 2rem;
+            margin: 1.5rem 0 1rem;
+            border: 1px solid #b7d4da;
+            text-align: left;
+        }
+        .ending-note p {
+            font-size: 1rem;
+            color: #1d404a;
+            margin-bottom: 0.6rem;
+        }
+        .ending-note .signature {
+            font-size: 0.9rem;
+            color: #3b6b72;
+            margin-top: 1rem;
+            border-top: 1px solid #bbd7db;
+            padding-top: 1rem;
+        }
+        /* FAQ 摘要风格（嵌入在结尾中） */
+        .faq-mini {
+            background: #f8fcfc;
+            border-radius: 20px;
+            padding: 0.9rem 1.2rem;
+            margin: 1.2rem 0 0.6rem;
+            border-left: 4px solid #3dabab;
+        }
+        .faq-mini p {
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+        .faq-mini .q {
+            font-weight: 470;
+            color: #10555a;
+        }
+        .faq-mini .a {
+            color: #2d575e;
+        }
+        /* 响应式细节 */
+        @media (max-width: 520px) {
+            .page { width: 94%; }
+            .hero-note { padding: 1.8rem 1.2rem; }
+            .bridge { padding: 1.4rem 1.2rem; }
+            .feature-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+            .feature-card { padding: 1.2rem 1rem; }
+            .short-line { font-size: 1.2rem; }
+        }
+        @media (min-width: 800px) {
+            .page { max-width: 780px; }
+            .feature-grid { gap: 1.3rem; }
+            .hero-note { padding: 2.8rem 2.5rem; }
+        }
+        /* 微元素 */
+        .accent-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #328f8f;
+            border-radius: 50%;
+            margin-right: 6px;
+            opacity: 0.35;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #c7dee2;
+            margin: 1.2rem 0;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 + 叙事 -->
+    <div class="hero-note">
+        <div class="short-line">
+            <span class="accent-dot"></span> 想找到体彩，往往只需一次确认。
+        </div>
+        <div class="intro-text">
+            <p>很多人第一次接触<a href="https://cnweb-sports-lottery.com">体彩</a>时，心里会冒出一个念头：我到底来对地方了没有？这个页面就是为此准备的——让你在几秒内看清楚，这里能做什么、为什么值得停下来。</p>
+            <p style="margin-top: 1rem;">没有复杂的引导，只有一条安静的路径：从识别用途，到确认信息，然后自己判断。</p>
+        </div>
+    </div>
+
+    <!-- 承接段落：从使用场景展开 -->
+    <div class="bridge">
+        <p><em>场景</em> 你或许刚打开手机，想查一下体彩相关的消息，或者只是路过想确认一下。这时你需要的不是满屏广告，而是一个干净、能快速对焦的页面。</p>
+        <p>在 <a href="https://cnweb-sports-lottery.com" style="color:#16777e; text-decoration:underline dotted;">体彩</a> 上，信息围绕体彩的核心功能展开：规则、类型、基本常识。没有多余装饰，也没有悬空的承诺。</p>
+        <p>就好比走进一间安静的阅览室——你找的是内容，不是噪音。</p>
+    </div>
+
+    <!-- 特点列表 (网格卡片) -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="icon-symbol">◈</div>
+            <h3>结构清晰</h3>
+            <p>从彩种介绍到基础概念，分类直接，不需要反复跳转。适合快速浏览和对比。</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-symbol">◈</div>
+            <h3>叙述克制</h3>
+            <p>没有夸大的收益描述，也没有催促性的按钮。页面语气接近说明手册，留给你判断空间。</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-symbol">◈</div>
+            <h3>信息密度适中</h3>
+            <p>每段内容控制在几行以内，重点词汇有视觉区分。阅读压力小，适合碎片时间。</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-symbol">◈</div>
+            <h3>移动优先</h3>
+            <p>针对手机屏幕做了间距和字体优化，卡片布局在窄屏上自动收拢，不拥挤。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + FAQ 摘要 -->
+    <div class="ending-note">
+        <p>这个站点不替你决定，只是把关于体彩的基本框架放在那里。你看了，了解了，然后可以选择继续或者离开——都自然。</p>
+
+        <div class="faq-mini">
+            <p class="q">▸ 这个网站主要提供什么？</p>
+            <p class="a">围绕体彩的信息页面，包括玩法说明、术语解释、以及一些基础规则。没有购彩入口，也没有跳转链接。</p>
+            <p class="q" style="margin-top:0.8rem;">▸ 内容会频繁更新吗？</p>
+            <p class="a">保持稳定，主要反映体彩通用的知识框架。变动时会有标注。</p>
+        </div>
+
+        <div class="signature">
+            <span style="opacity: 0.7;">— 如果你还想再确认，可以直接前往 </span>
+            <a href="https://cnweb-sports-lottery.com" style="color:#166b6b; font-weight: 460; background: #d7edec; padding: 0.15rem 0.7rem; border-radius: 30px; text-decoration: none;">体彩</a>
+            <span style="opacity: 0.7;"> 页面，自己看看。</span>
+        </div>
+    </div>
+
+    <!-- 很小的提示性分隔（保持呼吸感） -->
+    <hr>
+    <div style="text-align: center; color: #4a757a; font-size: 0.85rem; padding: 0.3rem 0 1.8rem; letter-spacing: 0.01em;">
+        叙述页 · 仅用于介绍用途
+    </div>
+
+</div>
+</body>
+</html>
